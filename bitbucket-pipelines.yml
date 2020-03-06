@@ -1,0 +1,11 @@
+image: node:10.15.3
+
+pipelines:
+  custom: # run renovate. about cron setting is Bitbucket console
+    renovate:
+      - step:
+          caches:
+            - node
+          script:
+            - npm install -g renovate
+            - renovate --password=$ACCOUNT_PASSWORD --username=$ACCOUNT_NAME --platform=bitbucket xxxx/$BITBUCKET_REPO_SLUG
